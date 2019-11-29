@@ -1,0 +1,17 @@
+<mat-accordion multi="true" *ngIf="books.length > 0">
+  <mat-expansion-panel *ngFor="let book of books">
+    <mat-expansion-panel-header class="info-text1">
+      {{ book.title }}
+    </mat-expansion-panel-header>
+    <div class="book-image">
+      <img [src]="book.imagePath" [alt]="book.title">
+    </div>
+    <p class="info-text1">{{ book.description }}</p>
+     <p class="info-text1">{{ book.authors}}</p>
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/edit', book.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(book.id)">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="books.length <= 0">No books added yet!!!!!</p>
